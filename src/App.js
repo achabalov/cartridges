@@ -1,28 +1,39 @@
-import React from 'react';
-import './App.scss';
-import {Route, NavLink, Link} from 'react-router-dom';
-import { FormCartridge } from './components/Cartridges/FormCartridge';
+import React from "react";
+import "./App.scss";
+import { Route, NavLink } from "react-router-dom";
+import { FormCartridge } from "./components/Cartridges/FormCartridge";
+import Equipment from "./components/Equipment/Equipment";
 
 function App() {
   return (
     <div className="App">
-      <nav>
-        <ul >
-        <li>
-            <NavLink to='/' exact activeClassName='activeLink link'>Главная страница</NavLink>
-          </li>
-        <li>
-            <NavLink to='/addFormCartridge' activeClassName='activeLink link'>Добавить картриджи в заправку</NavLink>
+      <nav className="__nav">
+        <ul className="__nav__ul">
+          <li>
+            <NavLink to="/" exact activeClassName="activeLink link">
+              <button className="btn btn-success">Главная страница</button>
+            </NavLink>
           </li>
           <li>
-            <NavLink to='/addFormEquipment' activeClassName='activeLink link'>Добавить технику в ремонт</NavLink>
+            <NavLink to="/addFormCartridge" activeClassName="activeLink link">
+              <button className="btn btn-success">
+                Добавить картриджи в заправку
+              </button>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/addFormEquipment" activeClassName="activeLink link">
+              <button className="btn btn-success">
+                Добавить технику в ремонт
+              </button>
+            </NavLink>
           </li>
         </ul>
       </nav>
       <hr />
-      <Route path={'/'} exact render={()=> <h1>Home page</h1>}/>
-      <Route path={'/addFormCartridge'} exact component={FormCartridge} />
-      {/* <Route path={'/addFormEquipment'} exact component={}/> */}
+      <Route path={"/"} exact render={() => <h1>Home page</h1>} />
+      <Route path={"/addFormCartridge"} exact component={FormCartridge} />
+      <Route path={'/addFormEquipment'} exact component={Equipment}/>
     </div>
   );
 }

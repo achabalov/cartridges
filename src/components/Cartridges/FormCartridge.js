@@ -4,9 +4,10 @@ import { ADD_NEW_CARTRIDGE, NEW_TYPES_CARTRIDGE } from "../../redux/types";
 
 export function FormCartridge() {
 
-    const cartridge = useSelector(state => state.equipment.cartridge);
+    // const cartridge = useSelector(state => state.equipment.cartridge);
     const newT = useSelector(state => state.equipment.newTypeCartridge);
-
+    const addLoading = useSelector(state => state.equipment.addLoading);
+    console.log(addLoading);
     const dispatch = useDispatch();
     const [branch, setBranch] = useState('')
     const [model, setModel] = useState('')
@@ -45,14 +46,13 @@ export function FormCartridge() {
         } else {
             setCount(event.target.value);
         }
-        
     }
 
   return (
     <form onSubmit={submitHandler} style={{width: '80%', margin: '0 auto'}}>
       <div className="mb-3">
           <label className='form-label'>Выберите свой филиал</label>
-      <select onChange={event => setBranch(event.target.value)} className='form-select'>
+      <select onChange={event => setBranch(event.target.value)} disabled={addLoading} className='form-select'>
             <option value='Дзержинский'>Дзержинский</option>
             <option value='Центральный'>Центральный</option>
             <option value='Ворошиловский'>Ворошиловский</option>
