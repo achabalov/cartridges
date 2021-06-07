@@ -1,4 +1,4 @@
-import { NEW_TYPES_CARTRIDGE } from "./types";
+import { NEW_TYPES_CARTRIDGE, REMOVE_CARTRIDGE } from "./types";
 
 // export function newTypesOfCartridge(newTypeCartridge) {
 //     return dispacth = () => {
@@ -10,3 +10,11 @@ import { NEW_TYPES_CARTRIDGE } from "./types";
 //         payload: newTypeCartridge
 //     }
 // }
+
+// export const deleteReduser =(id)=> {
+//     console.log(id);
+//     return {
+//         type: REMOVE_CARTRIDGE,
+//         payload: id
+//     }
+// } 

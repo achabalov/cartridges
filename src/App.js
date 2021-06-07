@@ -31,9 +31,9 @@ function App() {
         </ul>
       </nav>
       <hr />
-      <Route path={"/"} exact render={() => <h1>Home page</h1>} />
+      <Route path={"/"} exact component={Equipment} />
       <Route path={"/addFormCartridge"} exact component={FormCartridge} />
-      <Route path={'/addFormEquipment'} exact component={Equipment}/>
+      {/* <Route path={'/addFormEquipment'} exact component={Equipment}/> */}
     </div>
   );
 }

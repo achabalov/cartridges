@@ -5,14 +5,10 @@ import Cartridge from './Cartridge';
 
 export default function Cartridges() {
     const cartridges = useSelector(state => state.equipment.cartridges);
-    console.log(cartridges);
     return (
         <div>
-            {cartridges.map(cartridge => {
-                 cartridge.map(cart => {
-                    return <Cartridge cartridge={cart} key={Math.random() * 10} />
-                })
-                // return 
+            {cartridges.map((cartridge, index) => {
+                    return <Cartridge cartridge={cartridge} key={index} />
             })}
         </div>
     )

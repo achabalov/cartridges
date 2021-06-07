@@ -4,10 +4,9 @@ import { ADD_NEW_CARTRIDGE, NEW_TYPES_CARTRIDGE } from "../../redux/types";
 
 export function FormCartridge() {
 
-    // const cartridge = useSelector(state => state.equipment.cartridge);
+    const cartridge = useSelector(state => state.equipment.cartridges);
     const newT = useSelector(state => state.equipment.newTypeCartridge);
     const addLoading = useSelector(state => state.equipment.addLoading);
-    console.log(addLoading);
     const dispatch = useDispatch();
     const [branch, setBranch] = useState('')
     const [model, setModel] = useState('')
@@ -27,6 +26,7 @@ export function FormCartridge() {
     function addNewTypesOfCartridge(event) {
         event.preventDefault();
         const newTypeCartridge = {
+            id: Date.now(),
             branch, 
             model,
             count
@@ -34,6 +34,7 @@ export function FormCartridge() {
         dispatch({type: NEW_TYPES_CARTRIDGE, payload: newTypeCartridge})
         defValue()
     }
+    console.log(cartridge);
 
     
 

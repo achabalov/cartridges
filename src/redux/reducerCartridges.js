@@ -1,4 +1,5 @@
-import { NEW_TYPES_CARTRIDGE, ADD_NEW_CARTRIDGE } from "./types";
+import { useLayoutEffect } from "react";
+import { NEW_TYPES_CARTRIDGE, ADD_NEW_CARTRIDGE, REMOVE_CARTRIDGE } from "./types";
 
 const initialState = {
     cartridges: [],
@@ -22,6 +23,24 @@ export const reducerEquipment = (state = initialState, action) => {
                 cartridges: [...state.cartridges, action.payload],
                 newTypeCartridge: [],
                 addLoading: false
+            }
+        case REMOVE_CARTRIDGE:
+            console.log(state.cartridges);
+            console.log(state.cartridges);
+            const temp = [...state.cartridges];
+            console.log(temp);
+            temp.filter((cart, index) => {
+                const car = [...cart]
+                console.log(car.id, action.payload);
+                return car.id !== action.payload
+            })
+            console.log(temp);
+            return {
+                ...state,
+                cartridges: [...state.cartridges.filter((cart, index) => {
+                    const car = [...cart]
+                    return car.id !== action.payload
+                })]
             }
 
         default: return state;
