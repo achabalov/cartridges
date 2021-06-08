@@ -24,7 +24,7 @@ export const reducerEquipment = (state = initialState, action) => {
                 newTypeCartridge: [],
                 addLoading: false
             }
-        case REMOVE_CARTRIDGE:
+        case REMOVE_CARTRIDGE: 
             const temp = [...state.cartridges];
             const temp2 = temp.map(el=> {
                 return el.filter(el=> {
