@@ -11,14 +11,17 @@ export default function Cartridge2({cart}) {
             {cart.branch !== '' ? 
             <>
             <div className='cartridge__branch'>Филиал {cart.branch} 
-            <button 
+            </div>
+            </>
+            : 
+            <>
+            <div className='cartridge__model'>картридж {cart.model}<button 
             className='btn btn-warning'
             onClick={()=> dispatch({type: REMOVE_CARTRIDGE, payload: cart.id})}
             >Удалить</button></div>
-            </>
-  : null}
-            <div className='cartridge__model'>картридж {cart.model}</div>
             <div className='cartridge__count'>Колличество {cart.count}</div>
+            </>}
+            
         </li>
     )
 }

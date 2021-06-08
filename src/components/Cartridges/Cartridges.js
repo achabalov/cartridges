@@ -8,6 +8,7 @@ export default function Cartridges() {
     return (
         <div>
             {cartridges.map((cartridge, index) => {
+                console.log(cartridge);
                     return <Cartridge cartridge={cartridge} key={index} />
             })}
         </div>

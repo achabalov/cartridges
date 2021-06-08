@@ -25,22 +25,17 @@ export const reducerEquipment = (state = initialState, action) => {
                 addLoading: false
             }
         case REMOVE_CARTRIDGE:
-            console.log(state.cartridges);
-            console.log(state.cartridges);
             const temp = [...state.cartridges];
-            console.log(temp);
-            temp.filter((cart, index) => {
-                const car = [...cart]
-                console.log(car.id, action.payload);
-                return car.id !== action.payload
+            const temp2 = temp.map(el=> {
+                return el.filter(el=> {
+                console.log(el, action.payload);
+                return el.id !== action.payload
+                })
             })
-            console.log(temp);
+            console.log(temp2);
             return {
-                ...state,
-                cartridges: [...state.cartridges.filter((cart, index) => {
-                    const car = [...cart]
-                    return car.id !== action.payload
-                })]
+                ...state, 
+                cartridges: [...temp2]
             }
 
         default: return state;
