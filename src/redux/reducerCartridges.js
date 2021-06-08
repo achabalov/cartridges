@@ -1,4 +1,3 @@
-import { useLayoutEffect } from "react";
 import { NEW_TYPES_CARTRIDGE, ADD_NEW_CARTRIDGE, REMOVE_CARTRIDGE } from "./types";
 
 const initialState = {
@@ -10,6 +9,7 @@ const initialState = {
 
 export const reducerEquipment = (state = initialState, action) => {
     switch(action.type) {
+        // добавление нового типа картриджа в филиал
         case NEW_TYPES_CARTRIDGE:
             console.log('state');
             return {
@@ -17,6 +17,7 @@ export const reducerEquipment = (state = initialState, action) => {
                 newTypeCartridge: [...state.newTypeCartridge, action.payload],
                 addLoading: true
             }
+        // добавление общего колличества картриджей в филиал
         case ADD_NEW_CARTRIDGE:
             return {
                 ...state, 
@@ -24,6 +25,7 @@ export const reducerEquipment = (state = initialState, action) => {
                 newTypeCartridge: [],
                 addLoading: false
             }
+            // удаление, не работает из за не правильной передачи id... и 10 раз переделывалась
         case REMOVE_CARTRIDGE:
             console.log(state.cartridges);
             console.log(state.cartridges);
@@ -34,14 +36,6 @@ export const reducerEquipment = (state = initialState, action) => {
                 console.log(car.id, action.payload);
                 return car.id !== action.payload
             })
-            console.log(temp);
-            return {
-                ...state,
-                cartridges: [...state.cartridges.filter((cart, index) => {
-                    const car = [...cart]
-                    return car.id !== action.payload
-                })]
-            }
 
         default: return state;
     }

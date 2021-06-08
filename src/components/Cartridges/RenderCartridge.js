@@ -2,9 +2,9 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteReduser } from '../../redux/actions';
 import { REMOVE_CARTRIDGE } from '../../redux/types';
-import './Cartridge2.scss'
+import './RenderCartridge.scss'
 
-export default function Cartridge2({cart}) {
+export default function RenderCartridge({cart}) {
     const dispatch = useDispatch();
     return (
         <li className='cartridge'>

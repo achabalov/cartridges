@@ -1,11 +1,11 @@
 import React from "react";
-import Cartridge2 from './Cartridge2'
+import RenderCartridge from "./RenderCartridge";
 
 export default function Cartridge({ cartridge }) {
   return (
     <ul>
     {cartridge.map((cart, index) => {
-      return <Cartridge2 cart={cart} key={index}/>
+      return <RenderCartridge cart={cart} key={index}/>
     })}
     </ul>
   );

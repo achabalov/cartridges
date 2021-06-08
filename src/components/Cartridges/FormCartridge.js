@@ -12,17 +12,26 @@ export function FormCartridge() {
     const [model, setModel] = useState('')
     const [count, setCount] = useState('')
 
+
+    // Сбрасываем начальные значение 
     function defValue() {
         setBranch('')
         setModel()
         setCount('')
     }
 
+    // Добавляем в state конечный результат который будет рендерится на основной странице
     function submitHandler(event) {
         event.preventDefault()
         dispatch({type: ADD_NEW_CARTRIDGE, payload: newT})
     }
 
+    // Добавляем новый тип картриджей, и если нужно дополняем еще
+    /**
+     * храним в во временном стейте который дополняется
+     * после того мы нажимаем отправить в submitHandler 
+     * стейт обнуляется
+     */
     function addNewTypesOfCartridge(event) {
         event.preventDefault();
         const newTypeCartridge = {
@@ -37,7 +46,7 @@ export function FormCartridge() {
     console.log(cartridge);
 
     
-
+    // проверяем на число
     function onCheckedCounter(event) {
         console.log(Number.isInteger(+event.target.value));
         if(!Number.isInteger(+event.target.value)) {
@@ -49,6 +58,7 @@ export function FormCartridge() {
         }
     }
 
+    // форма для создания потребности по картриджам
   return (
     <form onSubmit={submitHandler} style={{width: '80%', margin: '0 auto'}}>
       <div className="mb-3">
