@@ -3,6 +3,7 @@ import "./App.scss";
 import { Route, NavLink } from "react-router-dom";
 import { FormCartridge } from "./components/Cartridges/FormCartridge";
 import Equipment from "./components/Equipment/Equipment";
+import FormDevices from "./components/Devices/FormDevices";
 
 function App() {
   return (
@@ -33,7 +34,7 @@ function App() {
       <hr />
       <Route path={"/"} exact component={Equipment} />
       <Route path={"/addFormCartridge"} exact component={FormCartridge} />
-      {/* <Route path={'/addFormEquipment'} exact component={Equipment}/> */}
+      <Route path={'/addFormEquipment'} exact component={FormDevices}/>
     </div>
   );
 }

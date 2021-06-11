@@ -3,11 +3,11 @@ import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
 import { useSelector } from 'react-redux';
 
-export default function MyForm({timeState, setTimeState})  {
+export default function MyForm({dateImportOnSU, setTimeState})  {
   const devices = useSelector(state => state.equipment.devices)
   
-  if(timeState.selectedDay) {
-      console.log(timeState.selectedDay.toLocaleDateString());
+  if(dateImportOnSU.selectedDay) {
+      console.log(dateImportOnSU.selectedDay.toLocaleDateString());
   }
 
   const handleDayChange= (selectedDay, modifiers, dayPickerInput) => {
@@ -22,18 +22,18 @@ export default function MyForm({timeState, setTimeState})  {
     return (
       <div>
         <p>
-          {timeState.isEmpty && 'Пожалуйста, выберите дату сдачи в ремонт'}
-          {!timeState.isEmpty && !timeState.selectedDay && 'This day is invalid'}
-          {timeState.selectedDay && timeState.isDisabled && 'This day is disabled'}
-          {timeState.selectedDay &&
-            !timeState.isDisabled &&
-            `You chose ${timeState.selectedDay.toLocaleDateString()}`}
+          {dateImportOnSU.isEmpty && 'Пожалуйста, выберите дату сдачи в ремонт'}
+          {!dateImportOnSU.isEmpty && !dateImportOnSU.selectedDay && 'This day is invalid'}
+          {dateImportOnSU.selectedDay && dateImportOnSU.isDisabled && 'This day is disabled'}
+          {dateImportOnSU.selectedDay &&
+            !dateImportOnSU.isDisabled &&
+            `You chose ${dateImportOnSU.selectedDay.toLocaleDateString()}`}
         </p>
         <DayPickerInput
-          value={timeState.selectedDay}
+          value={dateImportOnSU.selectedDay}
           onDayChange={handleDayChange}
           dayPickerProps={{
-            selectedDays: timeState.selectedDay,
+            selectedDays: dateImportOnSU.selectedDay,
             disabledDays: {
               daysOfWeek: [0, 6],
             },

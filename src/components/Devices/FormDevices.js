@@ -10,10 +10,11 @@ import MyForm from "../DayPickerInput/DayPickerInput";
 export default function FormDevices() {
   const devices = useSelector(state => state.equipment.devices)
   const dispatch = useDispatch('');
+  const [deviceName, setDeviceName] = useState('');
   const [typeDevices, setTypeDevices] = useState('');
   const [inventoryNumber, setInventoryNumbver] = useState('')
   const [breakingType, setBreakingType] = useState('');
-  const [timeState, setTimeState] = useState({
+  const [dateImportOnSU, setTimeState] = useState({
     selectedDay: undefined,
     isEmpty: true,
     isDisabled: false,
@@ -23,17 +24,34 @@ export default function FormDevices() {
     setInventoryNumbver(event.target.value);
   }
 
+  function onAddInventoryName(event) {
+    setDeviceName(event.target.value)
+  }
 
+  function onChangeHandler(event) {
+    event.preventDefault();
+    // const dateExportOnRepair = {}
+    // const dateImportToRepair = {}
+    // const dateExportToSY = {}
+    // let dateImport;
+    // if (dateImportOnSU.selectedDay !== undefined) {
+    //   dateImport = dateImportOnSU.toString()
+    //   console.log(dateImportOnSu.toString());
+    //   console.log(dateImport);
+    // }
 
-  function onChangeHandler() {
     const newDevices = {
       typeDevices,
+      deviceName,
       inventoryNumber,
-      breakingType
+      // breakingType,
+      dateImportOnSU,
+      dateExportOnRepair: '',
+      dateImportToRepair: '',
+      dateExportToSY: ''
     }
     dispatch({type: ADD_DEVICES, payload: newDevices})
   }
-  console.log(timeState);
 
   return (
     <>
@@ -47,6 +65,12 @@ export default function FormDevices() {
           <option value={'systemUnit'}>Системный блок</option>
           <option value={'monitor'}>Монитор</option>
         </select>
+        <br />
+        <label>Наименование техники</label>
+        <input
+        value={deviceName}
+        onChange={(event) => onAddInventoryName(event)}
+        />
         <br />
         <label>Инвентарный номер</label>
         <input
@@ -105,7 +129,7 @@ export default function FormDevices() {
 
         <label></label>
         
-        <MyForm timeState={timeState} setTimeState={setTimeState}/>
+        <MyForm dateImportOnSU={dateImportOnSU} setTimeState={setTimeState}/>
         <button type='submit' className='btn btn-success'>Отправить</button>
       </form>
     </>

@@ -1,7 +1,14 @@
-import React from 'react';
+import React from "react";
+import { useSelector } from "react-redux";
+import Device from "./Device";
 
 export default function Devices() {
-    return (
-        <div>BLOCK DEVICES</div>
-    )
+  const devices = useSelector((state) => state.equipment.devices);
+  return (
+    <ul>
+      {devices.map((device, index) => (
+        <Device key={index} device={device} />
+      ))}
+    </ul>
+  );
 }

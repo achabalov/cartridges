@@ -1,5 +1,4 @@
-import { useLayoutEffect } from "react";
-import { NEW_TYPES_CARTRIDGE, ADD_NEW_CARTRIDGE, REMOVE_CARTRIDGE } from "./types";
+import { NEW_TYPES_CARTRIDGE, ADD_NEW_CARTRIDGE, REMOVE_CARTRIDGE, ADD_DEVICES } from "./types";
 
 const initialState = {
     cartridges: [],
@@ -32,10 +31,15 @@ export const reducerEquipment = (state = initialState, action) => {
                 return el.id !== action.payload
                 })
             })
-            console.log(temp2);
             return {
                 ...state, 
                 cartridges: [...temp2]
+            }
+        case ADD_DEVICES:
+            return {
+                ...state,
+                devices: [...state.devices, action.payload]
+                
             }
 
         default: return state;
