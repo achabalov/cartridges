@@ -41,6 +41,7 @@ export const reducerEquipment = (state = initialState, action) => {
                 devices: [...state.devices, action.payload]
                 
             }
+            // адекватный ли перебор массива?
         case DATA_EXPORT_IN_REPAIR:
             const dataInRepair = state.devices.map(el => {
                 if(el.id === action.id) {

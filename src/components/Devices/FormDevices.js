@@ -4,6 +4,8 @@ import { ADD_DEVICES } from "../../redux/types";
 import MyForm from "../DayPickerInput/DayPickerInput";
 
 export default function FormDevices() {
+
+  // актуально ли использование useState в таком ключе вместе с Redux
   const dispatch = useDispatch('');
   const [deviceName, setDeviceName] = useState('');
   const [typeDevices, setTypeDevices] = useState('');
@@ -23,9 +25,9 @@ export default function FormDevices() {
     setDeviceName(event.target.value)
   }
 
+  // функция отправки элемента в state 
   function onChangeHandler(event) {
     event.preventDefault();
-
     const newDevices = {
       id: Date.now(),
       typeDevices,
@@ -40,6 +42,7 @@ export default function FormDevices() {
     dispatch({type: ADD_DEVICES, payload: newDevices})
   }
 
+  // форму можно разбить на более мелкие компоненты, добавить проверок для полей
   return (
     <>
       <h2>Техника в ремонт</h2>
@@ -66,11 +69,8 @@ export default function FormDevices() {
         />
         <br />
         <label>Суть поломки</label>
-       
-       
-
         <label></label>
-        
+      
         <MyForm date={dateImportOnSU} setTimeState={setTimeState}/>
         <button type='submit' className='btn btn-success'>Отправить</button>
       </form>
