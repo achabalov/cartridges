@@ -1,4 +1,8 @@
-import { NEW_TYPES_CARTRIDGE, REMOVE_CARTRIDGE } from "./types";
+// import { NEW_TYPES_CARTRIDGE, REMOVE_CARTRIDGE } from "./types";
+
+// export function time(payload, id) {
+    
+// }
 
 // export function newTypesOfCartridge(newTypeCartridge) {
 //     return dispacth = () => {

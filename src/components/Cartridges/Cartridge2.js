@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteReduser } from '../../redux/actions';
+// import { deleteReduser } from '../../redux/actions';
 import { REMOVE_CARTRIDGE } from '../../redux/types';
 import './Cartridge2.scss'
 

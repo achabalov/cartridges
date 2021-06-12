@@ -1,4 +1,4 @@
-import { NEW_TYPES_CARTRIDGE, ADD_NEW_CARTRIDGE, REMOVE_CARTRIDGE, ADD_DEVICES } from "./types";
+import { NEW_TYPES_CARTRIDGE, ADD_NEW_CARTRIDGE, REMOVE_CARTRIDGE, ADD_DEVICES, DATA_EXPORT_IN_REPAIR, DATA_IMPORT_OF_REPAIR, DATA_EXPORT_TO_SU } from "./types";
 
 const initialState = {
     cartridges: [],
@@ -40,6 +40,39 @@ export const reducerEquipment = (state = initialState, action) => {
                 ...state,
                 devices: [...state.devices, action.payload]
                 
+            }
+        case DATA_EXPORT_IN_REPAIR:
+            const dataInRepair = state.devices.map(el => {
+                if(el.id === action.id) {
+                    el.dateExportOnRepair = action.payload;
+                }   
+                return el
+            })
+            return {
+                ...state,
+                devices: dataInRepair
+            }
+        case DATA_IMPORT_OF_REPAIR:
+            const dataOfRepair = state.devices.map(el => {
+                if(el.id === action.id) {
+                    el.dateImportOfRepair = action.payload;
+                }   
+                return el
+            })
+            return {
+                ...state,
+                devices: dataOfRepair
+            }
+        case DATA_EXPORT_TO_SU:
+            const dataToSu = state.devices.map(el => {
+                if(el.id === action.id) {
+                    el.dateExportToSU = action.payload;
+                }   
+                return el
+            })
+            return {
+                ...state,
+                devices: dataToSu
             }
 
         default: return state;

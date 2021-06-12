@@ -1,19 +1,14 @@
 import React, { useState } from "react";
-// import DayPicker from 'react-day-picker';
-// import DayPickerInput from 'react-day-picker/DayPickerInput';
-
-// import 'react-day-picker/lib/style.css';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { ADD_DEVICES } from "../../redux/types";
 import MyForm from "../DayPickerInput/DayPickerInput";
 
 export default function FormDevices() {
-  const devices = useSelector(state => state.equipment.devices)
   const dispatch = useDispatch('');
   const [deviceName, setDeviceName] = useState('');
   const [typeDevices, setTypeDevices] = useState('');
   const [inventoryNumber, setInventoryNumbver] = useState('')
-  const [breakingType, setBreakingType] = useState('');
+  // const [breakingType, setBreakingType] = useState('');
   const [dateImportOnSU, setTimeState] = useState({
     selectedDay: undefined,
     isEmpty: true,
@@ -30,25 +25,17 @@ export default function FormDevices() {
 
   function onChangeHandler(event) {
     event.preventDefault();
-    // const dateExportOnRepair = {}
-    // const dateImportToRepair = {}
-    // const dateExportToSY = {}
-    // let dateImport;
-    // if (dateImportOnSU.selectedDay !== undefined) {
-    //   dateImport = dateImportOnSU.toString()
-    //   console.log(dateImportOnSu.toString());
-    //   console.log(dateImport);
-    // }
 
     const newDevices = {
+      id: Date.now(),
       typeDevices,
       deviceName,
       inventoryNumber,
       // breakingType,
       dateImportOnSU,
       dateExportOnRepair: '',
-      dateImportToRepair: '',
-      dateExportToSY: ''
+      dateImportOfRepair: '',
+      dateExportToSU: ''
     }
     dispatch({type: ADD_DEVICES, payload: newDevices})
   }
@@ -79,7 +66,21 @@ export default function FormDevices() {
         />
         <br />
         <label>Суть поломки</label>
-        <div className="form-check form-switch">
+       
+       
+
+        <label></label>
+        
+        <MyForm date={dateImportOnSU} setTimeState={setTimeState}/>
+        <button type='submit' className='btn btn-success'>Отправить</button>
+      </form>
+    </>
+  );
+}
+
+
+
+/* <div className="form-check form-switch">
           <input
             className="form-check-input"
             type="checkbox"
@@ -90,7 +91,7 @@ export default function FormDevices() {
           </label>
           </div>
           <div className="form-check form-switch">
-          <input
+          <input 
             className="form-check-input"
             type="checkbox"
             id="flexSwitchCheckDefault"
@@ -125,13 +126,4 @@ export default function FormDevices() {
           <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
             Гудит
           </label>
-        </div>
-
-        <label></label>
-        
-        <MyForm dateImportOnSU={dateImportOnSU} setTimeState={setTimeState}/>
-        <button type='submit' className='btn btn-success'>Отправить</button>
-      </form>
-    </>
-  );
-}
+        </div> */
