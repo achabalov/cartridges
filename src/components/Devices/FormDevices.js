@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ADD_DEVICES } from "../../redux/types";
 import MyForm from "../DayPickerInput/DayPickerInput";
 
 export default function FormDevices() {
-
+  const devices = useSelector(state => state.equipment.devices);
+  console.log(devices);
   // актуально ли использование useState в таком ключе вместе с Redux
   const dispatch = useDispatch('');
   const [deviceName, setDeviceName] = useState('');

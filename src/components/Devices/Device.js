@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { DATA_EXPORT_IN_REPAIR, DATA_EXPORT_TO_SU, DATA_IMPORT_OF_REPAIR } from '../../redux/types';
 import MyForm from '../DayPickerInput/DayPickerInput';
 import './device.scss';
 
 export default function Devices({device}) {
     const dispatch = useDispatch();
+    const devices = useSelector(state => state.equipment.devices);
+    console.log(devices);
 
     // повторяющийся код отслеживания элементов
     const [dateExportToRepair, setdataExportToRepair] = useState({
@@ -14,7 +16,7 @@ export default function Devices({device}) {
         isDisabled: false,
       })
       useEffect(()=> {
-        dispatch({type: DATA_EXPORT_IN_REPAIR, payload: dateExportToRepair, id: device.id})
+        dateExportToRepair.selectedDay && dispatch({type: DATA_EXPORT_IN_REPAIR, payload: dateExportToRepair, id: device.id})
       }, [dateExportToRepair])
 
       const [dateImportOfRepair, setDateImportOfRepair] = useState({
@@ -23,7 +25,7 @@ export default function Devices({device}) {
         isDisabled: false,
       })
       useEffect(()=> {
-        dispatch({type: DATA_IMPORT_OF_REPAIR, payload: dateImportOfRepair, id: device.id})
+        dateImportOfRepair.selectedDay && dispatch({type: DATA_IMPORT_OF_REPAIR, payload: dateImportOfRepair, id: device.id})
       }, [dateImportOfRepair])
 
       const [dateExportToSU, setDateExportToSU] = useState({
@@ -32,7 +34,7 @@ export default function Devices({device}) {
         isDisabled: false,
       })
       useEffect(()=> {
-        dispatch({type: DATA_EXPORT_TO_SU, payload: dateExportToSU, id: device.id})
+        dateExportToSU.selectedDay && dispatch({type: DATA_EXPORT_TO_SU, payload: dateExportToSU, id: device.id})
       }, [dateExportToSU])
 
 
@@ -60,7 +62,7 @@ export default function Devices({device}) {
                 <div className='device__list'>
                     <span>Дата отправки отправки в ремонт</span>
                     <span className='device__list__date'>{device.dateExportOnRepair.selectedDay !== undefined ? device.dateExportOnRepair.selectedDay.toLocaleDateString(): '-'}</span>
-                    <MyForm date={dateExportToRepair} setTimeState={setdataExportToRepair} />
+                    <MyForm date={dateExportToRepair} setTimeState={setdataExportToRepair}/>
                 </div>
                 <div className='device__list'>
                     <span>Дата возвращения с ремонта</span>

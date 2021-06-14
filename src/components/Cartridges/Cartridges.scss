@@ -1,0 +1,14 @@
+.form__container {
+    display: flex;
+    flex-flow: column nowrap;
+    
+    height: 100%;
+    &__contols {
+        width: 30%;
+        margin: 0 auto;
+    }
+
+    &.modal__z {
+        background-color: #999;
+    }
+}
