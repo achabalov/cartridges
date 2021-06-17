@@ -1,6 +1,7 @@
 import React from 'react';
-import Cartridges from '../Cartridges/Cartridges';
+import Cartridge from '../Cartridges/CartridgeList/Cartridge';
 import Devices from '../Devices/Devices';
+import CartridgesFilter from '../Cartridges/CartridgeFilter/CartridgesFilter';
 import './Equipment.scss';
 
 export default function Equipment() {
@@ -8,7 +9,8 @@ export default function Equipment() {
     return (
         <div className='equipment'>
             <div className='cartridges'>
-                <Cartridges />
+                <CartridgesFilter />
+                <Cartridge />
             </div>
             <div className='Devices'>
                 <Devices />

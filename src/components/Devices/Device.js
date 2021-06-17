@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { DATA_EXPORT_IN_REPAIR, DATA_EXPORT_TO_SU, DATA_IMPORT_OF_REPAIR } from '../../redux/types';
 import MyForm from '../DayPickerInput/DayPickerInput';
 import './device.scss';
 
 export default function Devices({device}) {
     const dispatch = useDispatch();
-    const devices = useSelector(state => state.equipment.devices);
-    console.log(devices);
 
     // повторяющийся код отслеживания элементов
     const [dateExportToRepair, setdataExportToRepair] = useState({

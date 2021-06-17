@@ -10,7 +10,6 @@ const modal = useSelector(state => state.equipment.modal)
 const model = useSelector(state=> state.cartridge.model)
 const count = useSelector(state=> state.cartridge.count)
 const branch = useSelector(state=> state.equipment.branch)
-console.log(model);
 const dispatch = useDispatch();
     return (
         <div className={modal ?'modal__select active' : 'modal__select'} 

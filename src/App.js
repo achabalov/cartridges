@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.scss";
 import { Route, NavLink } from "react-router-dom";
-import { FormCartridge } from "./components/Cartridges/FormCartridge";
+import { FormCartridge } from "./components/Cartridges/FormCartridges/FormCartridge";
 import Equipment from "./components/Equipment/Equipment";
 import FormDevices from "./components/Devices/FormDevices";
 
