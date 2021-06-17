@@ -1,8 +1,9 @@
-import { NEW_TYPES_CARTRIDGE, ADD_NEW_CARTRIDGE, REMOVE_CARTRIDGE, ADD_DEVICES, DATA_EXPORT_IN_REPAIR, DATA_IMPORT_OF_REPAIR, DATA_EXPORT_TO_SU, SHOW_MODAL_ADD_CARTRIDGE } from "./types";
+import { NEW_TYPES_CARTRIDGE, ADD_NEW_CARTRIDGE, REMOVE_CARTRIDGE, ADD_DEVICES, DATA_EXPORT_IN_REPAIR, DATA_IMPORT_OF_REPAIR, DATA_EXPORT_TO_SU, SHOW_MODAL_ADD_CARTRIDGE, ADD_BRANCH } from "./types";
 
 const initialState = {
     cartridges: [],
     modal: false,
+    branch: '',
     devices: [],
     newTypeCartridge: [],
     addLoading: false,
@@ -29,6 +30,11 @@ export const reducerEquipment = (state = initialState, action) => {
                 ...state,
                 modal: action.payload
             }
+        case ADD_BRANCH: 
+             return {
+                 ...state,
+                 branch: action.payload
+             }
         case REMOVE_CARTRIDGE: 
             const temp = [...state.cartridges];
             const temp2 = temp.map(el=> {
@@ -41,6 +47,16 @@ export const reducerEquipment = (state = initialState, action) => {
                 ...state, 
                 cartridges: [...temp2]
             }
+
+
+
+
+
+
+
+
+
+
         case ADD_DEVICES:
             return {
                 ...state,
