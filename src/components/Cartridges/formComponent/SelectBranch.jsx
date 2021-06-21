@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { ADD_BRANCH } from '../../../redux/types';
+import { branchs } from '../../../redux/defaultValues';
 
 export default function SelectBranch() {
-    const branchs = ['Дзержинский',  'Центральный', 'Ворошиловский', 'Краснооктябрьский']
     const dispatch = useDispatch();
     return (
         <select className='form-select' onChange={event =>  dispatch({type: ADD_BRANCH, payload: event.target.value})} defaultValue={''}>

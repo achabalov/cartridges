@@ -6,6 +6,7 @@
     align-items: flex-start;
     width: 400px;
     border: 1px solid black;
+    margin-top: 10px;
     &__branch {
         display: flex;
         width: 100%;
@@ -26,5 +27,12 @@
         flex: 1 0 auto;
         justify-content: space-between;
         border: 1px solid black;
+    }
+    &__button {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
     }
 }

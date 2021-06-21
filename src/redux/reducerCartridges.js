@@ -7,12 +7,28 @@ const initialState = {
     devices: [],
     newTypeCartridge: [],
     addLoading: false,
+    filterValue: []
 }
 
 export const reducerEquipment = (state = initialState, action) => {
     switch(action.type) {
+        case 'filterBranch':
+            const branch = state.cartridges.filter(el=> {
+                return el.branch === action.payload
+            })
+            return {
+                ...state,
+                filterValue: [...branch]
+            }
+        case 'filterModel':
+            const model = state.cartridges.filter(el=> {
+                return el.model === action.payload
+            })
+            return {
+                ...state,
+                filterValue: [...model]
+            }
         case NEW_TYPES_CARTRIDGE:
-            console.log('state');
             return {
                 ...state,
                 newTypeCartridge: [...state.newTypeCartridge, action.payload],
@@ -35,27 +51,16 @@ export const reducerEquipment = (state = initialState, action) => {
                  ...state,
                  branch: action.payload
              }
-        case REMOVE_CARTRIDGE: 
-            const temp = [...state.cartridges];
-            const temp2 = temp.map(el=> {
-                return el.filter(el=> {
-                console.log(el, action.payload);
+        case REMOVE_CARTRIDGE:
+            console.log(state.filterValue);
+            const temp2 = state.filterValue.map(el=> {
+                console.log(action.payload, el.id);
                 return el.id !== action.payload
-                })
             })
             return {
                 ...state, 
-                cartridges: [...temp2]
+                filterValue: [...temp2]
             }
-
-
-
-
-
-
-
-
-
 
         case ADD_DEVICES:
             return {
