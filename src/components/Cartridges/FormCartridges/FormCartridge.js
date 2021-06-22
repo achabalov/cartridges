@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SelectBranch from "../formComponent/SelectBranch";
 import ModalCartridgeForm from "../ModalAddForm/ModalCartridgeForm";
+import Cartridge from "../CartridgeList/Cartridge";
+import CartridgesFilter from "../CartridgeFilter/CartridgesFilter";
 import "./FormCartridge.scss";
 import { SHOW_MODAL_ADD_CARTRIDGE } from "../../../redux/types";
 
@@ -22,6 +24,7 @@ export function FormCartridge() {
         <label className="form-label">Выберите свой филиал</label>
         <SelectBranch />
         <ModalCartridgeForm />
+        <Cartridge />
       </div>
     </form>
   );

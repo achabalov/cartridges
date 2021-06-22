@@ -3,7 +3,7 @@ import SelectModel from '../formComponent/SelectModal';
 import SelectCartridgeCount from '../formComponent/SelectCartridgeCount';
 import './ModalCartridgeForm.scss'
 import { useDispatch, useSelector } from 'react-redux';
-import { ADD_NEW_CARTRIDGE, SHOW_MODAL_ADD_CARTRIDGE } from '../../../redux/types';
+import { ADD_NEW_CARTRIDGE, FILTER_BRANCH, SHOW_MODAL_ADD_CARTRIDGE } from '../../../redux/types';
 
 export default function ModalCartridgeForm() {
 const modal = useSelector(state => state.equipment.modal)
@@ -20,10 +20,14 @@ const dispatch = useDispatch();
                 <SelectModel />
                 <label htmlFor="">Укажите количество</label>
                 <SelectCartridgeCount />
-                {model && count ? <button className='btn btn-success' onClick={()=> {
+                {model && count ? 
+                <button className='btn btn-success' 
+                onClick={()=> {
                     dispatch({type: ADD_NEW_CARTRIDGE, payload: {branch, model, count}})
+                    dispatch({type: FILTER_BRANCH, payload: branch})
                     dispatch({type: 'RESET'})
-}}>Добавить</button> : ''}
+                }}
+                >Добавить</button> : ''}
                 <button className='btn btn-danger' onClick={()=> dispatch({type: SHOW_MODAL_ADD_CARTRIDGE, payload: false})}>Закрыть</button>
             </div>
         </div>

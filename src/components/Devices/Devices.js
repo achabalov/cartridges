@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Device from "./Device";
 
 export default function Devices() {
-  const devices = useSelector((state) => state.equipment.devices);
+  const devices = useSelector((state) => state.device.devices);
   return (
     <ul>
       {devices.map((device, index) => (

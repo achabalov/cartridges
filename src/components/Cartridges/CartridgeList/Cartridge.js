@@ -6,11 +6,12 @@ import "./Cartridge.scss";
 export default function Cartridge() {
   const cartridge = useSelector((state) => state.equipment.filterValue);
   const dispatch = useDispatch();
+  console.log('Cartridge', cartridge);
   return (
-    <ul>
+    <div className='cartridge__container'>
       {cartridge.map((request, index) => {
         return (
-          <li key={index} className="cartridge">
+          <div key={index} className="cartridge">
             <div className="cartridge__branch">Филиал {request.branch}</div>
             <div className="cartridge__model">картридж {request.model}</div>
             <div className="cartridge__count">Колличество {request.count}</div>
@@ -32,9 +33,9 @@ export default function Cartridge() {
                 Удалить
               </button>
             </div>
-          </li>
+          </div>
         );
       })}
-    </ul>
+    </div>
   );
 }
