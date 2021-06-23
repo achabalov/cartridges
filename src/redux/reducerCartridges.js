@@ -27,11 +27,9 @@ export const reducerEquipment = (state = initialState, action) => {
           addLoading: false,
         };
     case FILTER_BRANCH:
-      console.log('filter branch');
       const branch = state.cartridges.filter((el) => {
         return el.branch === action.payload;
       });
-      console.log(branch);
       return {
         ...state,
         filterValue: [...branch],
@@ -61,7 +59,9 @@ export const reducerEquipment = (state = initialState, action) => {
         branch: action.payload,
       };
     case REMOVE_CARTRIDGE:
-      const temp2 = state.filterValue.map((el) => {
+      
+      const temp2 = state.filterValue.filter((el) => {
+        console.log(el.id, action.payload);
         return el.id !== action.payload;
       });
       return {

@@ -1,7 +1,8 @@
 import React from 'react';
 import Cartridge from '../Cartridges/CartridgeList/Cartridge';
 import Devices from '../Devices/Devices';
-import CartridgesFilter from '../Cartridges/CartridgeFilter/CartridgesFilter';
+import SelectBranch from '../Cartridges/formComponent/SelectBranch';
+import SelectBranchRequest from '../Cartridges/SelectBranchRequest/SelectBranchRequest';
 import './Equipment.scss';
 
 export default function Equipment() {
@@ -9,8 +10,8 @@ export default function Equipment() {
     return (
         <div className='equipment'>
             <div className='cartridges'>
-                <CartridgesFilter />
-                <Cartridge />
+                <SelectBranch />
+                <SelectBranchRequest />
             </div>
             <div className='Devices'>
                 <Devices />

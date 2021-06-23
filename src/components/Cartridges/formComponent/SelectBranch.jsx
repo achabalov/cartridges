@@ -10,7 +10,8 @@ export default function SelectBranch() {
             dispatch({type: ADD_BRANCH, payload: event.target.value})
             dispatch({type: FILTER_BRANCH, payload: event.target.value})
         }
-        } defaultValue={''}>
+        } defaultValue={'initialCount'}>
+                <option disabled value={'initialCount'}>Выберите филиал</option>
             {branchs.map((option, index)=> {
                 return <option key={index} value={option}>{option}</option>
             })}

@@ -11,6 +11,8 @@ const model = useSelector(state=> state.cartridge.model)
 const count = useSelector(state=> state.cartridge.count)
 const branch = useSelector(state=> state.equipment.branch)
 const dispatch = useDispatch();
+// const cart = useSelector(state=> state.equipment.cartridges);
+// console.log(cart);
     return (
         <div className={modal ?'modal__select active' : 'modal__select'} 
         onClick={()=> dispatch({type: SHOW_MODAL_ADD_CARTRIDGE, payload: false})}>
@@ -23,12 +25,15 @@ const dispatch = useDispatch();
                 {model && count ? 
                 <button className='btn btn-success' 
                 onClick={()=> {
-                    dispatch({type: ADD_NEW_CARTRIDGE, payload: {branch, model, count}})
+                    const id = Date.now()
+                    dispatch({type: ADD_NEW_CARTRIDGE, payload: {id, branch, model, count}})
                     dispatch({type: FILTER_BRANCH, payload: branch})
                     dispatch({type: 'RESET'})
                 }}
                 >Добавить</button> : ''}
-                <button className='btn btn-danger' onClick={()=> dispatch({type: SHOW_MODAL_ADD_CARTRIDGE, payload: false})}>Закрыть</button>
+                <button className='btn btn-danger' 
+                onClick={()=> dispatch({type: SHOW_MODAL_ADD_CARTRIDGE, payload: false})}
+                >Закрыть</button>
             </div>
         </div>
         )
