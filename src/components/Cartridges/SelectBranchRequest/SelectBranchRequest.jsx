@@ -2,16 +2,17 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 export default function SelectBranchRequest() {
-    const readyBranch = useSelector(state=> [...state.readyApplication.readyApplication])
-    const rdn = [...readyBranch]
-    console.log(...rdn)
+    const branch = useSelector(state=> state.equipment.branch)
+    console.log(branch);
+    const readyBranch = useSelector(state=> state.readyApplication)
+    console.log(readyBranch[branch]);
+
     return (
         <div>
-            {rdn.map((request, index) => {
-                console.log(request);
+            <div>{branch}</div>
+            {readyBranch[branch] !== undefined && readyBranch[branch].map((request, index) => {
                 return (
                     <div key={index}>
-                        <div>{request.branch}</div>
                         <div>{request.model}</div>
                         <div>{request.count}</div>
                     </div>

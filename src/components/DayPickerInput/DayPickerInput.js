@@ -1,6 +1,7 @@
 import React, { } from 'react';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
+import './DayPickerInput.scss'
 
 export default function MyForm({date, setTimeState})  {
 
@@ -14,7 +15,7 @@ export default function MyForm({date, setTimeState})  {
   }
 
     return (
-      <div>
+      <div classNames='dayPicker'>
         <p>
           {date.isEmpty && 'Пожалуйста, выберите дату сдачи в ремонт'}
           {!date.isEmpty && !date.selectedDay && 'This day is invalid'}
