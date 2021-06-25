@@ -1,0 +1,35 @@
+.form {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+
+    .device__form {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 800px;
+        &__label {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: flex-end;
+            flex: 0 1 400px;
+            width: 400px;
+            > * {
+                display: flex;
+                width: 400px;
+                justify-content: flex-end;
+                padding-right: 10px;
+            }
+        }
+        &__input {
+            display: flex;
+            flex: 1 0 auto;
+            flex-flow: row nowrap;
+            justify-content: flex-start;
+            width: 400px;
+            > * {
+                width: 200px;
+            }
+        }
+    }
+}

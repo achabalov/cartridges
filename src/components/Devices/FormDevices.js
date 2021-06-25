@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { ADD_DEVICES } from "../../redux/types";
 import MyForm from "../DayPickerInput/DayPickerInput";
+import './FormDevice.scss'
 
 export default function FormDevices() {
   // актуально ли использование useState в таком ключе вместе с Redux
@@ -45,32 +46,49 @@ export default function FormDevices() {
   return (
     <>
       <h2>Техника в ремонт</h2>
-      <form onSubmit={onChangeHandler}>
-        <label>Тип техники</label>
-        <select onChange={(event)=> setTypeDevices(event.target.value)}>
+      <form className='form' onSubmit={onChangeHandler}>
+        <div className='device__form'>
+          <div className='device__form__label'>
+        <label className='deviasdce__form__labael'>Тип техники</label>
+        </div>
+        <div className='device__form__input'>
+        <select className='devdsice__form__input' onChange={(event)=> setTypeDevices(event.target.value)}>
           <option value={'MFU'}>МФУ</option>
           <option value={'printer'}>Принтер</option>
           <option value={'scaner'}>Сканер</option>
           <option value={'systemUnit'}>Системный блок</option>
           <option value={'monitor'}>Монитор</option>
         </select>
+        </div>
+        </div>
         <br />
-        <label>Наименование техники</label>
-        <input
+        <div className='device__form'>
+          <div className='device__form__label'>
+        <label className='dasddevice__form__label'>Наименование техники</label>
+        </div>
+        <div className='device__form__input'>
+        <input className='devdasdice__form__input'
         value={deviceName}
         onChange={(event) => onAddInventoryName(event)}
         />
+        </div>
+        </div>
         <br />
-        <label>Инвентарный номер</label>
-        <input
+        <div className='device__form'>
+        <div className='device__form__label'>
+        <label className='devicedasd__form__label'>Инвентарный номер</label>
+        </div>
+        <div className='device__form__input'>
+        <input className='device__fodasdarm__input'
         value={inventoryNumber}
         onChange={(event) => onAddInventoryNumber(event)}
         />
+        </div>
+        </div>
         <br />
-        <label>Суть поломки</label>
-        <label></label>
-      
+        <div className='device__form'>
         <MyForm date={dateImportOnSU} setTimeState={setTimeState}/>
+        </div>
         <button type='submit' className='btn btn-success'>Отправить</button>
       </form>
     </>

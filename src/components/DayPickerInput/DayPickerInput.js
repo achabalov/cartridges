@@ -15,11 +15,11 @@ export default function MyForm({date, setTimeState})  {
   }
 
     return (
-      <div classNames='dayPicker'>
+      <div>
         <p>
-          {date.isEmpty && 'Пожалуйста, выберите дату сдачи в ремонт'}
-          {!date.isEmpty && !date.selectedDay && 'This day is invalid'}
-          {date.selectedDay && date.isDisabled && 'This day is disabled'}
+          {/* {date.isEmpty && 'Пожалуйста, выберите дату сдачи в ремонт'} */}
+          {/* {!date.isEmpty && !date.selectedDay && 'This day is invalid'}
+          {date.selectedDay && date.isDisabled && 'This day is disabled'} */}
           {/* {date.selectedDay &&
             !date.isDisabled &&
             `You chose ${date.selectedDay.toLocaleDateString()}`} */}
