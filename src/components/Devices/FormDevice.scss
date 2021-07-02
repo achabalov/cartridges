@@ -1,35 +1,36 @@
 .form {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
     align-items: center;
+    // border: 1px solid gray;
+    // border-radius: 10px;
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px 0;
+    @media screen and (min-width: 400px) {
+        min-width: 500px;
+    }
 
     .device__form {
         display: flex;
-        flex-direction: row;
+        flex-flow: row wrap;
         justify-content: center;
-        width: 800px;
+        width: 100%;
+
         &__label {
             display: flex;
             flex-flow: row wrap;
             justify-content: flex-end;
-            flex: 0 1 400px;
-            width: 400px;
-            > * {
-                display: flex;
-                width: 400px;
-                justify-content: flex-end;
-                padding-right: 10px;
-            }
+            width: 50%;
+            padding-right: 10px;
         }
+
         &__input {
             display: flex;
-            flex: 1 0 auto;
-            flex-flow: row nowrap;
+            flex-flow: row wrap;
             justify-content: flex-start;
-            width: 400px;
-            > * {
-                width: 200px;
-            }
+            width: 50%;
+            padding-left: 10px;
         }
     }
 }

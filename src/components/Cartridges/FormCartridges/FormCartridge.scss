@@ -1,10 +1,5 @@
-// .form__container {
-//     display: flex;
-//     flex-flow: column nowrap;
-    
-//     height: 100%;
-//     &__contols {
-//         width: 30%;
-//         margin: 0 auto;
-//     }
-// }
+.form__container__contols { 
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}

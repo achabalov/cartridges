@@ -9,11 +9,11 @@ export default function Equipment() {
     return (
         <div className='equipment'>
                 <SelectBranch />
-            <hr style={{width: '60%'}}/>
+            <hr style={{width: '70%'}}/>
             <div className='__cartridges'>
                 <SelectBranchRequest />
             </div>
-            <hr style={{width: '80%'}}/>
+            <hr style={{width: '90%'}}/>
             <div className='__devices'>
                 <Devices />
             </div>
