@@ -4,13 +4,13 @@ import { REMOVE_CARTRIDGE } from "../../../redux/types";
 import "./Cartridge.scss";
 
 export default function Cartridge() {
+  
   const cartridge = useSelector((state) => state.equipment.filterValue);
   const dispatch = useDispatch();
-  // console.log(cartridge);
+  
   return (
     <div className='cartridge__container'>
       {cartridge.map((request, index) => {
-        // console.log(request);
         return (
           <div key={index} className="cartridge">
             <div className="cartridge__branch">Филиал {request.branch}</div>

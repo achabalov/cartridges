@@ -3,7 +3,7 @@ import SelectModel from '../formComponent/SelectModal';
 import SelectCartridgeCount from '../formComponent/SelectCartridgeCount';
 import './ModalCartridgeForm.scss'
 import { useDispatch, useSelector } from 'react-redux';
-import { ADD_NEW_CARTRIDGE, FILTER_BRANCH, SHOW_MODAL_ADD_CARTRIDGE } from '../../../redux/types';
+import { ADD_NEW_CARTRIDGE, DEVICE_FILTER_BRANCH, SHOW_MODAL_ADD_CARTRIDGE } from '../../../redux/types';
 
 export default function ModalCartridgeForm() {
 const modal = useSelector(state => state.equipment.modal)
@@ -27,7 +27,7 @@ const dispatch = useDispatch();
                 onClick={()=> {
                     const id = Date.now()
                     dispatch({type: ADD_NEW_CARTRIDGE, payload: {id, branch, model, count}})
-                    dispatch({type: FILTER_BRANCH, payload: branch})
+                    dispatch({type: DEVICE_FILTER_BRANCH, payload: branch})
                     dispatch({type: 'RESET'})
                 }}
                 >Добавить</button> : ''}

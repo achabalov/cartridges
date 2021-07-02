@@ -81,7 +81,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { DATA_EXPORT_IN_REPAIR, DATA_EXPORT_TO_SU, DATA_IMPORT_OF_REPAIR } from '../../redux/types';
+import { DATA_EXPORT_IN_REPAIR, DATA_EXPORT_ON_SU, DATA_EXPORT_TO_SU, DATA_IMPORT_OF_REPAIR } from '../../redux/types';
 import MyForm from '../DayPickerInput/DayPickerInput';
 import './device.scss';
 
@@ -111,19 +111,30 @@ export default function Devices({device}) {
         isDisabled: false,
       })
 
-      const [dateImportOnSU, setDateImportOnSU] = useState(device.dateImportOnSU);
+      const [dateImportOnSU, setDateImportOnSU] = useState({
+        selectedDay: undefined,
+        isEmpty: true,
+        isDisabled: false,
+      })
+
+    //   const [dateImportOnSU, setDateImportOnSU] = useState(device.dateImportOnSU);
 
       useEffect(()=> {
+        dateImportOnSU.selectedDay && dispatch({type: DATA_EXPORT_ON_SU, payload: dateImportOnSU, id: device.id})
         dateExportToSU.selectedDay && dispatch({type: DATA_EXPORT_TO_SU, payload: dateExportToSU, id: device.id})
         dateImportOfRepair.selectedDay && dispatch({type: DATA_IMPORT_OF_REPAIR, payload: dateImportOfRepair, id: device.id})
         dateExportToRepair.selectedDay && dispatch({type: DATA_EXPORT_IN_REPAIR, payload: dateExportToRepair, id: device.id})
-      }, [dateExportToSU, dateImportOfRepair, dateExportToRepair])
+      }, [dateImportOnSU, dateExportToSU, dateImportOfRepair, dateExportToRepair])
 
 
       // форму надо разбить на мелкие компоненты
     return (
         <li>
             <div className='device'>
+            <div className='device__list'>
+                    <span>Район</span>
+                    <span>{device.branch}</span>
+                </div>
                 <div className='device__list'>
                     <span>Тип устройства</span>
                     <span>{device.typeDevices}</span>
@@ -138,8 +149,8 @@ export default function Devices({device}) {
                 </div>
                 <div className='device__list'>
                     <span>Дата прибытия в комитет</span>
-                    <span className='device__list__date'>{device.dateImportOnSU.selectedDay.toLocaleDateString()}</span>
-                    <MyForm date={device.dateImportOnSU} setTimeState={setDateImportOnSU}/>
+                    <span className='device__list__date'>{device.dateImportOnSU.selectedDay !== undefined ? device.dateImportOnSU.selectedDay.toLocaleDateString(): '-'}</span>
+                    <MyForm date={dateImportOnSU} setTimeState={setDateImportOnSU}/>
                 </div>
                 <div className='device__list'>
                     <span>Дата отправки отправки в ремонт</span>
@@ -152,7 +163,7 @@ export default function Devices({device}) {
                     <MyForm date={dateImportOfRepair} setTimeState={setDateImportOfRepair} />
                 </div>
                 <div className='device__list'>
-                    <span>Дата отправки на СУ</span>
+                    <span>Дата отправки на судебные участки</span>
                     <span className='device__list__date'>{device.dateExportToSU.selectedDay !== undefined ? device.dateExportToSU.selectedDay.toLocaleDateString(): '-'}</span>
                     <MyForm className='asdqwe' date={dateExportToSU ? dateExportToSU : device.dateExportToSU} setTimeState={setDateExportToSU} />
                 </div>

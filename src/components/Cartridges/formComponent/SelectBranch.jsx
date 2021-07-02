@@ -1,14 +1,15 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { ADD_BRANCH, FILTER_BRANCH } from '../../../redux/types';
+// import { ADD_BRANCH, FILTER_BRANCH } from '../../../redux/types';
 import { branchs } from '../../../redux/defaultValues';
+import './SelectBranch.scss';
 
-export default function SelectBranch() {
+export default function SelectBranch({add, filter}) {
     const dispatch = useDispatch();
     return (
-        <select className='form-select' onChange={event => {
-            dispatch({type: ADD_BRANCH, payload: event.target.value})
-            dispatch({type: FILTER_BRANCH, payload: event.target.value})
+        <select className='form-select select__branch' onChange={event => {
+            dispatch({type: add, payload: event.target.value})
+            dispatch({type: filter, payload: event.target.value})
         }
         } defaultValue={'initialCount'}>
                 <option disabled value={'initialCount'}>Выберите филиал</option>

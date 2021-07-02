@@ -3,9 +3,8 @@ import {
   ADD_NEW_CARTRIDGE,
   REMOVE_CARTRIDGE,
   SHOW_MODAL_ADD_CARTRIDGE,
-  ADD_BRANCH,
-  FILTER_BRANCH,
-  FILTER_MODEL,
+  ADD_BRANCH_CARTRIDGES,
+  DEVICE_FILTER_BRANCH,
 } from "./types";
 
 const initialState = {
@@ -26,7 +25,7 @@ export const reducerEquipment = (state = initialState, action) => {
           newTypeCartridge: [],
           addLoading: false,
         };
-    case FILTER_BRANCH:
+    case DEVICE_FILTER_BRANCH:
       const branch = state.cartridges.filter((el) => {
         return el.branch === action.payload;
       });
@@ -34,14 +33,14 @@ export const reducerEquipment = (state = initialState, action) => {
         ...state,
         filterValue: [...branch],
       };
-    case FILTER_MODEL:
-      const model = state.cartridges.filter((el) => {
-        return el.model === action.payload;
-      });
-      return {
-        ...state,
-        filterValue: [...model],
-      };
+    // case FILTER_MODEL:
+    //   const model = state.cartridges.filter((el) => {
+    //     return el.model === action.payload;
+    //   });
+    //   return {
+    //     ...state,
+    //     filterValue: [...model],
+    //   };
     case NEW_TYPES_CARTRIDGE:
       return {
         ...state,
@@ -53,7 +52,7 @@ export const reducerEquipment = (state = initialState, action) => {
         ...state,
         modal: action.payload,
       };
-    case ADD_BRANCH:
+    case ADD_BRANCH_CARTRIDGES:
       return {
         ...state,
         branch: action.payload,

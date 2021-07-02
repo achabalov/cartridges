@@ -1,5 +1,4 @@
 import React from 'react';
-// import Cartridge from '../Cartridges/CartridgeList/Cartridge';
 import Devices from '../Devices/Devices';
 import SelectBranch from '../Cartridges/formComponent/SelectBranch';
 import SelectBranchRequest from '../Cartridges/SelectBranchRequest/SelectBranchRequest';
@@ -9,10 +8,12 @@ export default function Equipment() {
 
     return (
         <div className='equipment'>
-            <div className='__cartridges'>
                 <SelectBranch />
+            <hr style={{width: '60%'}}/>
+            <div className='__cartridges'>
                 <SelectBranchRequest />
             </div>
+            <hr style={{width: '80%'}}/>
             <div className='__devices'>
                 <Devices />
             </div>

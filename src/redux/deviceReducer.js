@@ -1,7 +1,8 @@
-import { ADD_DEVICES, DATA_EXPORT_IN_REPAIR, DATA_EXPORT_TO_SU, DATA_IMPORT_OF_REPAIR } from "./types";
+import { ADD_BRANCH_DEVICE, ADD_DEVICES, DATA_EXPORT_IN_REPAIR, DATA_EXPORT_ON_SU, DATA_EXPORT_TO_SU, DATA_IMPORT_OF_REPAIR } from "./types";
 
 const initialState = {
     devices: [],
+    branch: ''
 }
 
 export const deviceReducer = (state = initialState, action) => {
@@ -10,6 +11,22 @@ export const deviceReducer = (state = initialState, action) => {
             return {
                 ...state,
                 devices: [...state.devices, action.payload]
+            }
+        case ADD_BRANCH_DEVICE:
+            return {
+                ...state,
+                branch: action.payload
+            }
+        case DATA_EXPORT_ON_SU:
+            const dataImportOnSu = state.devices.map(el=> {
+                if(el.id === action.id) {
+                    el.dateImportOnSU = action.payload;
+                }
+                return el;
+            })
+            return {
+                ...state,
+                devices: dataImportOnSu
             }
         case DATA_EXPORT_IN_REPAIR:
             const dataInRepair = state.devices.map(el => {

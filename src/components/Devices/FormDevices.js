@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { ADD_DEVICES } from "../../redux/types";
+import { useDispatch, useSelector } from "react-redux";
+import { ADD_BRANCH_DEVICE, ADD_DEVICES, DEVICE_FILTER_BRANCH } from "../../redux/types";
 import MyForm from "../DayPickerInput/DayPickerInput";
+import SelectBranch from '../Cartridges/formComponent/SelectBranch';
 import './FormDevice.scss'
 
 export default function FormDevices() {
   // актуально ли использование useState в таком ключе вместе с Redux
   const dispatch = useDispatch('');
+  const branch = useSelector(state=> state.device.branch)
   const [deviceName, setDeviceName] = useState('');
   const [typeDevices, setTypeDevices] = useState('');
   const [inventoryNumber, setInventoryNumbver] = useState('')
@@ -16,6 +18,7 @@ export default function FormDevices() {
     isEmpty: true,
     isDisabled: false,
   })
+  
 
   function onAddInventoryNumber(event){
     setInventoryNumbver(event.target.value);
@@ -33,6 +36,7 @@ export default function FormDevices() {
       typeDevices,
       deviceName,
       inventoryNumber,
+      branch,
       // breakingType,
       dateImportOnSU,
       dateExportOnRepair: '',
@@ -47,6 +51,7 @@ export default function FormDevices() {
     <>
       <h2>Техника в ремонт</h2>
       <form className='form' onSubmit={onChangeHandler}>
+        <SelectBranch add={ADD_BRANCH_DEVICE} filter={DEVICE_FILTER_BRANCH}/>
         <div className='device__form'>
           <div className='device__form__label'>
         <label className='deviasdce__form__labael'>Тип техники</label>
@@ -89,7 +94,10 @@ export default function FormDevices() {
         <div className='device__form'>
         <MyForm date={dateImportOnSU} setTimeState={setTimeState}/>
         </div>
-        <button type='submit' className='btn btn-success'>Отправить</button>
+        {
+          deviceName && typeDevices && inventoryNumber && branch && dateImportOnSU.selectedDay ?
+          <button type='submit' className='btn btn-success'>Отправить</button> : 'Заполните все необходимые поля'
+        }
       </form>
     </>
   );
