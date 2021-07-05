@@ -4,6 +4,7 @@ import {branchs} from './defaultValues';
 export const finishRequestCartridge = (state = [], action) => {
     switch(action.type) {
         case FINISH_REQUEST:
+            console.log(state);
             const branch = branchs.filter(el => {
                 return el === action.payload[0].branch
             })

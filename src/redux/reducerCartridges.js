@@ -5,6 +5,7 @@ import {
   SHOW_MODAL_ADD_CARTRIDGE,
   ADD_BRANCH_CARTRIDGES,
   DEVICE_FILTER_BRANCH,
+  REMOVE_ALL_CARTRIDGE,
 } from "./types";
 
 const initialState = {
@@ -18,13 +19,18 @@ const initialState = {
 
 export const reducerEquipment = (state = initialState, action) => {
   switch (action.type) {
-      case ADD_NEW_CARTRIDGE:
-        return {
-          ...state,
-          cartridges: [...state.cartridges, action.payload],
-          newTypeCartridge: [],
-          addLoading: false,
-        };
+    case ADD_NEW_CARTRIDGE:
+      return {
+        ...state,
+        cartridges: [...state.cartridges, action.payload],
+        newTypeCartridge: [],
+        addLoading: false,
+      };
+    case REMOVE_ALL_CARTRIDGE:
+      return {
+        ...state,
+        filterValue: []
+      }
     case DEVICE_FILTER_BRANCH:
       const branch = state.cartridges.filter((el) => {
         return el.branch === action.payload;
@@ -33,14 +39,6 @@ export const reducerEquipment = (state = initialState, action) => {
         ...state,
         filterValue: [...branch],
       };
-    // case FILTER_MODEL:
-    //   const model = state.cartridges.filter((el) => {
-    //     return el.model === action.payload;
-    //   });
-    //   return {
-    //     ...state,
-    //     filterValue: [...model],
-    //   };
     case NEW_TYPES_CARTRIDGE:
       return {
         ...state,
@@ -58,7 +56,6 @@ export const reducerEquipment = (state = initialState, action) => {
         branch: action.payload,
       };
     case REMOVE_CARTRIDGE:
-      
       const temp2 = state.filterValue.filter((el) => {
         console.log(el.id, action.payload);
         return el.id !== action.payload;

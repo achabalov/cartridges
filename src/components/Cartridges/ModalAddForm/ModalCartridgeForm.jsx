@@ -11,10 +11,9 @@ const model = useSelector(state=> state.cartridge.model)
 const count = useSelector(state=> state.cartridge.count)
 const branch = useSelector(state=> state.equipment.branch)
 const dispatch = useDispatch();
-// const cart = useSelector(state=> state.equipment.cartridges);
-// console.log(cart);
+
     return (
-        <div className={modal ?'modal__select active' : 'modal__select'} 
+        <div className={modal ? 'modal__select active' : 'modal__select'} 
         onClick={()=> dispatch({type: SHOW_MODAL_ADD_CARTRIDGE, payload: false})}>
             <div 
             className={modal ? 'modal__select__container active' :'modal__select__container'} onClick={e=> e.stopPropagation()}>
