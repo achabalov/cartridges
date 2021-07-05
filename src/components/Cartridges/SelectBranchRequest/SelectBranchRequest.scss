@@ -1,8 +1,35 @@
-.form__select__request {
+.finish__request {
     display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
-    align-content: flex-start;
-    width: 100%;
-    
-}
+    flex-flow: row nowrap;
+    border: 1px solid gray;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    &__branch {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        padding: 10px;
+        font-weight: bold;
+    }
+    &__cartridge {
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+        & > * {
+            padding: 10px;
+            border-left: 1px solid black;
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            align-items: center;
+        }
+        &__model {
+            border-bottom: 1px solid black;
+            font-weight: bold;
+        }
+        &__count {
+            font-weight: bold;
+        }
+    }
+} 

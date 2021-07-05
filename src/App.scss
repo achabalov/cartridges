@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  
+
   .__nav__ul {
     display: flex;
     flex-flow: row wrap;
@@ -23,5 +23,13 @@
   }
 }
 
+html, body {
+  background: rgb(224,236,237);
+background: linear-gradient(90deg, rgba(224,236,237,1) 0%, rgba(206,214,215,1) 21%, rgba(213,217,218,1) 35%, rgba(155,167,170,1) 100%);
+}
 
+input, textarea, select option, select {
 
+  background-color: #eee; 
+
+}

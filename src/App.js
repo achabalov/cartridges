@@ -31,7 +31,7 @@ function App() {
           </li>
         </ul>
       </nav>
-      <hr />
+      <hr style={{width: '40%', margin: '10px auto'}}/>
       <Route path={"/"} exact component={Equipment} />
       <Route path={"/addFormCartridge"} exact component={FormCartridge} />
       <Route path={'/addFormEquipment'} exact component={FormDevices}/>

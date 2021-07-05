@@ -26,7 +26,7 @@ export default function FormDevices() {
   }
 
   function onAddInventoryName(event) {
-    setDeviceName(event.target.value.trim());
+    setDeviceName(event.target.value);
   }
 
   function onChangeHandler(event) {
