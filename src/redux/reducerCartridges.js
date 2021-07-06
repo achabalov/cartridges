@@ -16,7 +16,7 @@ const initialState = {
   branch: "",
   addLoading: false,
   finishRequestCartridges: [],
-};
+}; 
 
 export const reducerEquipment = (state = initialState, action) => {
   switch (action.type) {
@@ -34,23 +34,32 @@ export const reducerEquipment = (state = initialState, action) => {
         ...state,
         cartridges: [...filterBranch]
       }
-    case FINISH_REQUEST: 
-      const branch = branchs.filter(el => {
-          return el === action.payload[0].branch
-      })
-      const br = branch[0]
-      console.log(branch, ' --- ', branch[0]);
-
-      if(state[br] === undefined) {
+      case FINISH_REQUEST:
+        const oneRequest = action.payload[0].branch
+        console.log(oneRequest);
         return {
-        ...state,
-        finishRequestCartridges: [...state.finishRequestCartridges, ...action.payload]
-        }
-      }
-      return {
           ...state,
-          [br]: [...state[br], ...action.payload]
-      }
+          finishRequestCartridges: [...state.finishRequestCartridges, {
+            [oneRequest]: [...action.payload]
+          }]
+        }
+    // case FINISH_REQUEST: 
+    //   const branch = branchs.filter(el => {
+    //       return el === action.payload[0].branch
+    //   })
+    //   const br = branch[0]
+    //   console.log(branch, ' --- ', branch[0]);
+
+    //   if(state[br] === undefined) {
+    //     return {
+    //     ...state,
+    //     finishRequestCartridges: [...state.finishRequestCartridges, ...action.payload]
+    //     }
+    //   }
+    //   return {
+    //       ...state,
+    //       [br]: [...state[br], ...action.payload]
+    //   }
       case DEVICE_FILTER_BRANCH:
       const branches = state.cartridges.filter((el) => {
         return el.branch === action.payload;

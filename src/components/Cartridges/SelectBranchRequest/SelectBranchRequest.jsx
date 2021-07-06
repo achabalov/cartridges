@@ -9,6 +9,12 @@ export default function SelectBranchRequest() {
         return el.branch === branch
     })
     console.log(filterToBranch);
+
+    const finishRequest2 = useSelector(state=> state.equipment.finishRequestCartridges)
+    const filt = finishRequest2.map(el => {
+        const t1 = Object.keys(el).toString()
+        console.log(t1=== branch);
+    })
     return (
         filterToBranch.length ? <div className='finish__request'>
         <div className='finish__request__branch'>
