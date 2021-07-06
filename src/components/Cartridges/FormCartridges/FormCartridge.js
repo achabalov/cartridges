@@ -13,13 +13,13 @@ import {
 
 export function FormCartridge() {
   const dispatch = useDispatch();
-  const branch = useSelector((state) => state.equipment.branch);
+  const branch = useSelector(state => state.equipment.branch);
   useEffect(() => {
     branch && dispatch({ type: SHOW_MODAL_ADD_CARTRIDGE, payload: true });
   }, [branch]);
 
-  const formFilter = useSelector((state) => state.equipment.filterValue);
-
+  const formFilter = useSelector((state) => state.equipment.cartridges); 
+  console.log(formFilter);
   function submitHandler(event) {
     event.preventDefault();
   }

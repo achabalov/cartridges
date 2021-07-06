@@ -5,7 +5,7 @@ import "./Cartridge.scss";
 
 export default function Cartridge() {
   
-  const cartridge = useSelector((state) => state.equipment.filterValue);
+  const cartridge = useSelector((state) => state.equipment.cartridges);
   const dispatch = useDispatch();
   
   return (

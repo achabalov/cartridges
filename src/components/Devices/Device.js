@@ -94,16 +94,12 @@ export default function Devices({device}) {
         isEmpty: true,
         isDisabled: false,
       })
-      // useEffect(()=> {
-      // }, [dateExportToRepair])
 
       const [dateImportOfRepair, setDateImportOfRepair] = useState({
         selectedDay: undefined,
         isEmpty: true,
         isDisabled: false,
       })
-      // useEffect(()=> {
-      // }, [dateImportOfRepair])
 
       const [dateExportToSU, setDateExportToSU] = useState({
         selectedDay: undefined,
@@ -117,8 +113,6 @@ export default function Devices({device}) {
         isDisabled: false,
       })
 
-    //   const [dateImportOnSU, setDateImportOnSU] = useState(device.dateImportOnSU);
-
       useEffect(()=> {
         dateImportOnSU.selectedDay && dispatch({type: DATA_EXPORT_ON_SU, payload: dateImportOnSU, id: device.id})
         dateExportToSU.selectedDay && dispatch({type: DATA_EXPORT_TO_SU, payload: dateExportToSU, id: device.id})
@@ -126,8 +120,9 @@ export default function Devices({device}) {
         dateExportToRepair.selectedDay && dispatch({type: DATA_EXPORT_IN_REPAIR, payload: dateExportToRepair, id: device.id})
       }, [dateImportOnSU, dateExportToSU, dateImportOfRepair, dateExportToRepair])
 
-
-      // форму надо разбить на мелкие компоненты
+      const buttonHandler = () => {
+        return 
+      }
     return (
         <li>
             <div className='device'>
@@ -150,7 +145,9 @@ export default function Devices({device}) {
                 <div className='device__list'>
                     <span>Дата прибытия в комитет</span>
                     <span className='device__list__date'>{device.dateImportOnSU.selectedDay !== undefined ? device.dateImportOnSU.selectedDay.toLocaleDateString(): '-'}</span>
-                    <MyForm date={dateImportOnSU} setTimeState={setDateImportOnSU}/>
+                    <button onClick={()=> {
+                       buttonHandler()  
+                    }}><MyForm date={dateImportOnSU} setTimeState={setDateImportOnSU}/></button>
                 </div>
                 <div className='device__list'>
                     <span>Дата отправки отправки в ремонт</span>

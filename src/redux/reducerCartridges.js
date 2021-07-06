@@ -1,20 +1,21 @@
 import {
-  NEW_TYPES_CARTRIDGE,
   ADD_NEW_CARTRIDGE,
   REMOVE_CARTRIDGE,
   SHOW_MODAL_ADD_CARTRIDGE,
   ADD_BRANCH_CARTRIDGES,
-  DEVICE_FILTER_BRANCH,
   REMOVE_ALL_CARTRIDGE,
+  FINISH_REQUEST,
+  DEVICE_FILTER_BRANCH,
 } from "./types";
+
+import {branchs} from './defaultValues';
 
 const initialState = {
   cartridges: [],
   modal: false,
   branch: "",
-  newTypeCartridge: [],
   addLoading: false,
-  filterValue: [],
+  finishRequestCartridges: [],
 };
 
 export const reducerEquipment = (state = initialState, action) => {
@@ -23,28 +24,45 @@ export const reducerEquipment = (state = initialState, action) => {
       return {
         ...state,
         cartridges: [...state.cartridges, action.payload],
-        newTypeCartridge: [],
         addLoading: false,
       };
     case REMOVE_ALL_CARTRIDGE:
+      const filterBranch = state.cartridges.filter(el=> {
+        return el.branch !== state.branch;
+      })
       return {
         ...state,
-        filterValue: []
+        cartridges: [...filterBranch]
       }
-    case DEVICE_FILTER_BRANCH:
-      const branch = state.cartridges.filter((el) => {
+    case FINISH_REQUEST: 
+      const branch = branchs.filter(el => {
+          return el === action.payload[0].branch
+      })
+      const br = branch[0]
+      console.log(branch, ' --- ', branch[0]);
+
+      if(state[br] === undefined) {
+        return {
+        ...state,
+        finishRequestCartridges: [...state.finishRequestCartridges, ...action.payload]
+        }
+      }
+      return {
+          ...state,
+          [br]: [...state[br], ...action.payload]
+      }
+      case DEVICE_FILTER_BRANCH:
+      const branches = state.cartridges.filter((el) => {
         return el.branch === action.payload;
       });
       return {
         ...state,
-        filterValue: [...branch],
-      };
-    case NEW_TYPES_CARTRIDGE:
-      return {
-        ...state,
-        newTypeCartridge: [...state.newTypeCartridge, action.payload],
-        addLoading: true,
-      };
+        cartridges: [...branches],
+      }
+    // return {
+    //   ...state, 
+    //   finishRequestCartridges: [...state.finishRequestCartridges, ...action.payload]
+    // }
     case SHOW_MODAL_ADD_CARTRIDGE:
       return {
         ...state,
@@ -56,13 +74,13 @@ export const reducerEquipment = (state = initialState, action) => {
         branch: action.payload,
       };
     case REMOVE_CARTRIDGE:
-      const temp2 = state.filterValue.filter((el) => {
+      const temp2 = state.cartridges.filter((el) => {
         console.log(el.id, action.payload);
         return el.id !== action.payload;
       });
       return {
         ...state,
-        filterValue: [...temp2],
+        cartridges: [...temp2],
       };
 
     default:

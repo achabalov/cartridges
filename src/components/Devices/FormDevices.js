@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  ADD_BRANCH_DEVICE,
+  ADD_BRANCH_CARTRIDGES,
   ADD_DEVICES,
   DEVICE_FILTER_BRANCH,
 } from "../../redux/types";
@@ -11,7 +11,7 @@ import "./FormDevice.scss";
 
 export default function FormDevices() {
   const dispatch = useDispatch("");
-  const branch = useSelector((state) => state.device.branch);
+  const branch = useSelector((state) => state.equipment.branch);
   const [deviceName, setDeviceName] = useState("");
   const [typeDevices, setTypeDevices] = useState("");
   const [inventoryNumber, setInventoryNumbver] = useState("");
@@ -55,7 +55,7 @@ export default function FormDevices() {
     <>
       <h2>Техника в ремонт</h2>
       <form className='form' onSubmit={onChangeHandler}>
-        <SelectBranch add={ADD_BRANCH_DEVICE} filter={DEVICE_FILTER_BRANCH} />
+        <SelectBranch add={ADD_BRANCH_CARTRIDGES} filter={DEVICE_FILTER_BRANCH} />
         <br />
         <div className="device__form">
           <div className="device__form__label">
