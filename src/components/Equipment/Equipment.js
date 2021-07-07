@@ -10,7 +10,7 @@ export default function Equipment() {
     <div className="equipment">
       <SelectBranch add={ADD_BRANCH_CARTRIDGES} filter={DEVICE_FILTER_BRANCH} />
       <hr style={{ width: "70%" }} />
-      <div className="__cartridges">
+      <div className="equipment__cartridges">
       <h3>Картриджи в заправку</h3>
         <SelectBranchRequest />
       </div>

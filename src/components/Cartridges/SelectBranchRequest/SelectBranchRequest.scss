@@ -2,9 +2,10 @@
     display: flex;
     flex-flow: row nowrap;
     border: 1px solid gray;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     font-size: 1.1rem;
+    background-color: #fff;
     &__branch {
         display: flex;
         flex-flow: column nowrap;
