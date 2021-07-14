@@ -63,33 +63,41 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import './SelectBranchRequest.scss';
 import { cartridges_types } from '../../../redux/defaultValues';
-import Se2 from './Se2';
+// import Se2 from './Se2';
 
 export default function SelectBranchRequest() {
     const branch = useSelector(state=> state.equipment.branch)
-    const tem = []
-    const finishRequest = useSelector(state=> state.equipment.finishRequestCartridges)
-    const tes = finishRequest.map((el, index)=> {
-        console.log(...Object.keys(el), branch, finishRequest);
-        if(Object.keys(el).toString() === branch) {
-            console.log(el);
-            console.log(Object.values(el));
-        }
-        return Object.values(el)
-    })
-    console.log(tes);
+    // const tem = []
+    // const finishRequest = useSelector(state=> state.equipment.finishRequestCartridges)
+    // const tes = finishRequest.map((el, index)=> {
+    //     console.log(...Object.keys(el), branch, finishRequest);
+    //     if(Object.keys(el).toString() === branch) {
+    //         console.log(el);
+    //         console.log(Object.values(el));
+    //     }
+    //     return Object.values(el)
+    // })
+    // console.log(tes);
 
+    const finishRequest = useSelector(state => state.equipment.finishRequestCartridges);
+    console.log(finishRequest);
     return (
-        <>
-        {tes.map((element, index) => {
+        {finishRequest[1].map(()=> {
             return (
-                <div>
-                    <Se2 key={index} element={element} />
+                <>
+            <div className='finish__request__branch'>
+                <h5>Филиал</h5>
+                <div>{index}</div>
+            </div>
+                            <div className='finish__request__cartridge'>
+                        <div key={index}>
+                            <div className='finish__request__cartridge__model'>{request.model}</div>
+                            <div className='finish__request__cartdige__count'>{request.count}</div>
+                        </div>
                 </div>
+                </>
             )
-        })
-    }
-        </>
+        })}
     )
 }
 

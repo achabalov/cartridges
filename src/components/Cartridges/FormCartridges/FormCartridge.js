@@ -19,7 +19,6 @@ export function FormCartridge() {
   }, [branch]);
 
   const formFilter = useSelector((state) => state.equipment.cartridges); 
-  console.log(formFilter);
   function submitHandler(event) {
     event.preventDefault();
   }

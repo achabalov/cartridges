@@ -14,7 +14,7 @@ export default function SelectBranch({add, filter}) {
         } defaultValue={'initialCount'}>
             <option className={'dev_val'} disabled value={'initialCount'}>Выберите филиал</option>
             {branchs.map((option, index)=> {
-                return <option key={index} value={option}>{option}</option>
+                return <option key={index} value={option.branch}>{option.branch}</option>
             })}
         </select>
     )
