@@ -36,11 +36,10 @@ export const reducerEquipment = (state = initialState, action) => {
       }
       case FINISH_REQUEST:
         const oneRequest = action.payload[0].branch
-        console.log(oneRequest);
         return {
           ...state,
           finishRequestCartridges: [...state.finishRequestCartridges, {
-            [oneRequest]: [...action.payload]
+            [oneRequest]: action.payload
           }]
         }
     // case FINISH_REQUEST: 
