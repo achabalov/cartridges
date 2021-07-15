@@ -54,30 +54,41 @@ export const reducerEquipment = (state = initialState, action) => {
       //     }
         
 
+
       case FINISH_REQUEST:
-        let mas = {}
-        Object.entries(cartridges_types).map((key, index) => {
-          let m = key[0]
-          let c = key[1]
-          action.payload.map((el, index2) => {
-            
-            if(m === el.model) {
-              if(c === 0) {
-                c = +el.count;
-              } else {
-                c += +el.count
-              }
-            }
-            mas[m] = +c;
-          })
-        })
-        console.log(mas);
-
-        return {
-          ...state,
-          finishRequestCartridges: [...state.finishRequestCartridges, [action.payload[0].branch, mas]]
+        console.log(action.payload);
+            return {
+          ...state, 
+          finishRequestCartridges: [...state.finishRequestCartridges, [...action.payload]]
         }
+      //////////////////////////////////////////////////////////////////////
+      // case FINISH_REQUEST:
+      //   let mas = {}
+      //   const m2 = []
+      //   Object.entries(cartridges_types).map((key, index) => {
+      //     let m = key[0]
+      //     let c = key[1]
+      //     action.payload.map((el, index2) => {
+            
+      //       if(m === el.model) {
+      //         if(c === 0) {
+      //           c = +el.count;
+      //         } else {
+      //           c += +el.count
+      //         }
+      //       }
+      //       mas[m] = +c;
+            
+      //     })
+      //   })
 
+      //   console.log(mas);
+
+      //   return {
+      //     ...state,
+      //     finishRequestCartridges: [...state.finishRequestCartridges, action.payload[0].branch, mas]
+      //   }
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // ============= goood ======================
       

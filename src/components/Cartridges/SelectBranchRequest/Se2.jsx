@@ -1,19 +1,17 @@
 // import React from 'react';
-// import Se3 from './Se3';
 
-// export default function Se2({element}) {
-//     console.log('Se2');
-//     console.log(element);
+// export default function Se2({che, type}) {
+//     // console.log(type);
+//     const t = che.map(newEl => {
+//         console.log(newEl.model === type);
+//         return che
+//     })
 
 //     return (
 //         <>
-//         {/* {
-//         element.map(el=> {
-//             return (
-//             <Se3 el={el}/>
-//             )
-//         }) 
-//         } */}
+//         {/* {type.map(newEl => {
+//             console.log(newEl, che);
+//         })} */}
 //         </>
 //     )
 // }

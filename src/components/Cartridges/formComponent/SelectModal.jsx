@@ -11,7 +11,7 @@ export default function SelectModel() {
     return (
         <select className='form-select' onChange={event => dispatch({type: 'ADD_MODEL', payload: event.target.value})} defaultValue={model}>
             <option value={model}>Выберите модель</option>
-            {Object.keys(cartridges_types).map((model, index)=> {
+            {cartridges_types.map((model, index)=> {
                 // console.log(model);
                 return <option key={index} value={model}>{model}</option>
             })}
